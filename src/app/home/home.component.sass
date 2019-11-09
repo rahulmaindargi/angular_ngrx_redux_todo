@@ -1,0 +1,29 @@
+.red
+   // background-color: red
+.blue
+   // background-color: blue
+.user-list    
+    display: grid
+    //grid-template-columns: repeat(auto-fit, minmax(200px, max-content))
+    grid-template-columns: 20% 80%
+    grid-auto-rows: auto
+    grid-row-gap: 20px
+    height: max-content
+    app-user
+        display: flex
+        //grid-template-columns: fit-content(10%) minmax(10px, max-content)
+        //grid-column-gap: 10px
+        width: 100%
+    .router-outlet
+        grid-column: 2
+        grid-row-start: 1
+        grid-row-end: 10
+
+.myblue
+    li
+        background-color: blue
+        margin-bottom: 10px
+        app-user
+            display: grid
+            grid-template-columns: 10% auto
+        

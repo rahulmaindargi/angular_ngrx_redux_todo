@@ -1,0 +1,31 @@
+<!-- <p [class.red]="clicked">home works class red!</p>
+<p [ngClass]="{
+    'red': clicked,
+    'blue': !clicked
+}">home works! ngclass</p>
+<p [style.background-color]="clicked?'red': 'blue'">home works!style background-color</p>
+
+
+<p [ngStyle]="{
+    'background-color': clicked? 'red': 'blue',
+    'color': clicked? 'blue':'red' 
+}">home works!ngStyle</p>
+-->
+
+<button (click)="clickedEvent()">Load Users</button>
+<div class="user-list"  *ngIf="users | async" [ngClass]="{
+    'red': clicked,
+    'blue': !clicked
+}">
+    <app-user *ngFor="let user of (users | async)" [user]="user"></app-user>
+    <div class="router-outlet">
+        <router-outlet name="userData"></router-outlet>
+    </div>
+</div>
+<!--<ul *ngIf="users" class="myblue">
+    <li *ngFor="let user of users.data">
+        <app-user [user]="user"></app-user>
+    </li>
+</ul>
+-->
+
