@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { NgRedux, select$, select } from '@angular-redux/store';
-import { IAppState } from '../redux/app.store';
+import { IAppState, getIAppState, userSelector } from '../redux/app.store';
 import { Observable } from 'rxjs';
+import { Store, createSelector, select } from '@ngrx/store';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,10 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   clicked:boolean = false;
-  @select() users: Observable<any[]>;
-  constructor(private data: DataService,private state: NgRedux<IAppState>) { }
+  users: Observable<any[]>;
+  constructor(private data: DataService,private store: Store<IAppState>) {
+     this.users=store.select(userSelector);
+   }
 
   ngOnInit() {
     this.users.subscribe(us=>console.log(" Store works "+JSON.stringify(us)));
